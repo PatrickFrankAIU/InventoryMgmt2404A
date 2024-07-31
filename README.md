@@ -2,3 +2,6 @@
 
 # InventoryMgmt2403B
 Inventory Management Project, ITWEB 220, Term 2403B
+
+Note: This is the working project, with the steps to completed listed under Issues. To see the completed project, visit this repository: 
+https://github.com/PatrickFrankAIU/InventoryMgmt2403B-END
