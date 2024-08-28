@@ -26,9 +26,9 @@ function displayInventory() {
     // Iterate through the inventory and create HTML elements to display the data
     inventory.forEach(category => {
         const categoryEl = document.createElement('div');
-        categoryEl.innerHTML = `<strong>${category.category}</strong>:`;
+        categoryEl.innerHTML = "<strong>" + category.category + "<strong>";
         category.products.forEach(product => {
-            categoryEl.innerHTML += `<div>${product.product}: ${product.quantity}</div>`;
+            categoryEl.innerHTML += "<div>" + product.product + ": " + product.quantity;
         });
         inventoryDisplay.appendChild(categoryEl);
     });
