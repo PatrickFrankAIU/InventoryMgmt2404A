@@ -17,6 +17,8 @@ const inventory = [
         ]
     }
 ];
+let categoryMenu = document.getElementById("categoryInput"); // for the Category dropdown menu
+let productMenu = document.getElementById("productInput"); // for the Product dropdown menu
 
 // Function to display the inventory
 function displayInventory() {
@@ -36,5 +38,35 @@ function displayInventory() {
     });
 }
 
+function createCategories() {
+    // This works by building a collection of <option> elements for the <select> control
+    inventory.forEach(category => {
+        let categoryOption = document.createElement("option"); // new <option> tag
+        categoryOption.value = category.category; // sets value of new option to cat name
+        categoryOption.textContent = category.category; // sets display text 
+        categoryMenu.appendChild(categoryOption); // attaches <option> to <select> control
+    });
+}
+
+function createProducts() {
+    productMenu.innerHTML = ""; // to clear the list when a new category is selected
+    // below finds first object in inventory that matches
+    // if anything is found, the if condition below is true and the loop is executed
+    let selectedCategory = inventory.find(category => category.category === categoryMenu.value);
+    if (selectedCategory) {
+        selectedCategory.products.forEach(product => {
+            let productOption = document.createElement("option"); // new <option> for menu
+            productOption.value = product.product; // sets <option> value
+            productOption.text = product.product; // sets <option> display text
+            productMenu.appendChild(productOption); // attaches <option> to <select> (product menu)
+        });
+    }
+}
+
+// when a category is selected, update the product menu: 
+categoryMenu.addEventListener('change', createProducts); 
+
 // Initial display of inventory
-displayInventory();
+createCategories(); // create/update the category dropdown menu
+createProducts(); // create/update the product dropdown menu 
+displayInventory(); // display the inventory
