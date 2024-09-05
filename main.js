@@ -63,10 +63,20 @@ function createProducts() {
     }
 }
 
-// when a category is selected, update the product menu: 
-categoryMenu.addEventListener('change', createProducts); 
+function updateQuantity(){
+    let quantityInput = document.getElementById("quantityInput");
+    let totalQuantityDisplay = document.getElementById("totalQuantity");
+    totalQuantityDisplay.innerHTML = quantityInput.value;
+}
+
+let quantityInput = document.getElementById("quantityInput");
+quantityInput.addEventListener('input', updateQuantity);
+
+// when a category is selected, update the product menu:
+categoryMenu.addEventListener('change', createProducts);
+
 
 // Initial display of inventory
 createCategories(); // create/update the category dropdown menu
-createProducts(); // create/update the product dropdown menu 
+createProducts(); // create/update the product dropdown menu
 displayInventory(); // display the inventory
