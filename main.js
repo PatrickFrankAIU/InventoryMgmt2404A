@@ -66,11 +66,27 @@ function createProducts() {
 function updateQuantity(){
     let quantityInput = document.getElementById("quantityInput");
     let totalQuantityDisplay = document.getElementById("totalQuantity");
-    totalQuantityDisplay.innerHTML = quantityInput.value;
+    totalQuantityDisplay.innerHTML = "Total Quantity: " + quantityInput.value;
 }
-
 let quantityInput = document.getElementById("quantityInput");
 quantityInput.addEventListener('input', updateQuantity);
+
+function addNewCategory() {
+    let newCategoryInput = document.getElementById("newCategoryInput").value;
+    if (newCategoryInput) {
+        inventory.push({
+            category: newCategoryInput,
+            products: []
+        });
+        let categoryOption = document.createElement("option");
+        categoryOption.value = newCategoryInput;
+        categoryOption.textContent = newCategoryInput;
+        categoryMenu.appendChild(categoryOption);
+        document.getElementById("newCategoryInput").value = '';
+        displayInventory();
+    }
+}
+document.getElementById("addCategoryButton").addEventListener('click', addNewCategory);
 
 // when a category is selected, update the product menu:
 categoryMenu.addEventListener('change', createProducts);
